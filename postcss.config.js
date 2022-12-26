@@ -1,3 +1,3 @@
-const { postcssConfig } = require('@wonderflow/config')
+const postcssConfig = require('@wonderflow/config')
 
 module.exports = postcssConfig
