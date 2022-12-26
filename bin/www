@@ -1,0 +1,35 @@
+#!/usr/bin/env node
+
+import { join } from 'path'
+import { createReadStream } from 'fs'
+
+const app = require('fastify')()
+
+const PORT = 1234
+const HOST = 'localhost'
+
+app.register(require('fastify-cors'), {
+  credentials: true,
+  origin: [/localhost/]
+})
+app.register(require('fastify-compress'), {
+  encodings: ['deflate', 'gzip']
+})
+
+app.register(require('fastify-static'), {
+  root: join(__dirname, '../dist')
+})
+
+app.setNotFoundHandler((request, reply) => {
+  reply
+    .type('text/html')
+    .send(createReadStream(join(__dirname, '../dist/index.html')))
+})
+
+app.listen(PORT, HOST, (err, address) => {
+  if (err) {
+    console.error(err)
+    process.exit(1)
+  }
+  console.log(`Server listening on ${address}`)
+})
