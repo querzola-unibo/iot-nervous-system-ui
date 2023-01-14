@@ -2,7 +2,7 @@ import { getManagementApiClient } from '../../../api'
 import React from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
 
-export const RestfulApiProvider = ({ children }) => {
+export const ApiProvider = ({ children }) => {
   const defaultQueryFn = async ({ queryKey }) => {
     const [url, queryParams = {}] = queryKey
 

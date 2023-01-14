@@ -1,0 +1,8 @@
+.Shell {
+  height: 100vh;
+  background-color: var(--global-background);
+}
+
+.Main {
+  flex-grow: 1;
+}

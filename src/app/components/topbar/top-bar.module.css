@@ -1,0 +1,10 @@
+.TopBar {
+  border-bottom: 1px solid var(--dimmed-1);
+  color: var(--global-foreground);
+  width: 100%;
+  height: token(--space-64);
+}
+
+.Content {
+  width: 30%;
+}
