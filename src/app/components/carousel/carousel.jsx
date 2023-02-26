@@ -56,7 +56,7 @@ const Item = ({ label, icon, onClick }) => (
   <Card bordered={false} onClick={onClick} className={CarouselItem}>
     <Stack hAlign="center" rowGap={16}>
       <Symbol source={icon} dimension={32} />
-      <Title as="h2" level="6">{label}</Title>
+      <Title as="h2" level="6" textAlign="center">{label}</Title>
     </Stack>
 
   </Card>

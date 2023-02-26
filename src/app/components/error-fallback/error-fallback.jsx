@@ -7,7 +7,7 @@ export const ErrorFallback = () => {
   }
 
   return (
-    <Stack vAlign="center" hAlign="center" style={{ height: '100%' }} fill={false}>
+    <Stack vAlign="center" hAlign="center" style={{ height: '100vh' }} fill={false}>
       <InfoState
         actions={
           <Button onClick={onReloadPage}>Reload page</Button>
