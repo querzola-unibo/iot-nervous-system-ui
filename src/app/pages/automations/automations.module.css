@@ -1,0 +1,9 @@
+.TableCard {
+  background-color: var(--global-background);
+
+  /* border-radius: token(--radius-24);
+  padding: token(--space-24); */
+
+  border-radius: 24px;
+  padding: 24px;
+}

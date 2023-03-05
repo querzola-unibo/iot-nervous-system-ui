@@ -57,11 +57,11 @@ const Device = lazy(() =>
 //   }))
 // )
 
-// const Automations = lazy(() =>
-//   import('./pages/automations').then((module) => ({
-//     default: module.Automations
-//   }))
-// )
+const Automations = lazy(() =>
+  import('./pages/automations/automations').then((module) => ({
+    default: module.Automations
+  }))
+)
 
 // const User = lazy(() =>
 //   import('./pages/user').then((module) => ({
@@ -92,6 +92,12 @@ export const App = () => (
               <Route
                 path="/rooms/:roomId/devices/:deviceId"
                 element={<Device />}
+                errorElement={<ErrorFallback />}
+              />
+
+              <Route
+                path="/automations"
+                element={<Automations />}
                 errorElement={<ErrorFallback />}
               />
             </Routes>

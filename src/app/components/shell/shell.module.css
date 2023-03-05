@@ -4,5 +4,6 @@
 }
 
 .Main {
-  flex-grow: 1;
+  height: calc(100vh - token(--space-64));
+  overflow-y: auto;
 }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDebounce } from 'react-use'
 
+import { SearchBar as SearchbarClass } from './search.module.css'
 import { Textfield } from '@wonderflow/react-components'
 
 export const Searchbar = ({
@@ -15,6 +16,7 @@ export const Searchbar = ({
 
   return (
     <Textfield
+      className={SearchbarClass}
       iconPosition="left"
       icon="magnifying-glass"
       placeholder={placeholder}

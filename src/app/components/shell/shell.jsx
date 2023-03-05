@@ -4,20 +4,20 @@ import { useNavigate } from 'react-router-dom'
 import { Shell as ShellClass, Main as MainClass } from './shell.module.css'
 
 import {
-  Avatar,
   Container,
   IconButton,
   Button,
-  Stack
+  Stack,
+  OverlayContainer
 } from '@wonderflow/react-components'
-import { Searchbar, Topbar, ThemeSwitch } from '..'
+import { Searchbar, Topbar, Menu } from '..'
 
 export const Shell = ({ children }) => {
   const [theme, setTheme] = useState('dark')
   const [search, setSearch] = useState('')
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const navigate = useNavigate()
-
   const onBackHome = useCallback(() => {
     navigate('/')
   }, [navigate])
@@ -27,29 +27,37 @@ export const Shell = ({ children }) => {
   }, [navigate])
 
   return (
-    <Container as={Stack} className={ShellClass} padding={false} data-theme={theme} fill={false} hAlign="center">
+    <Container
+      as={Stack}
+      className={ShellClass}
+      padding={false}
+      data-theme={theme}
+      fill={false}
+      hAlign="center"
+    >
       <Topbar
         leftActions={(
           <>
-            <IconButton dimension="big" kind="flat" icon="c-pulse" onClick={onBackHome} />
+            <IconButton
+              dimension="big"
+              kind="flat"
+              icon="c-pulse"
+              onClick={onBackHome}
+            />
 
             {location.pathname !== '/' && (
-            <Button kind="flat" icon="chevron-left" onClick={onBack}>
-              Back
-            </Button>
+              <Button kind="flat" icon="chevron-left" onClick={onBack}>
+                Back
+              </Button>
             )}
           </>
         )}
         rightActions={(
-          <>
-            <ThemeSwitch theme={theme} setTheme={setTheme} />
-
-            <IconButton kind="flat" icon="github" />
-
-            <IconButton kind="flat" icon="gear" />
-
-            <Avatar />
-          </>
+          <IconButton
+            kind="flat"
+            icon="bars"
+            onClick={() => setIsMenuOpen(true)}
+          />
         )}
       >
         <Searchbar
@@ -63,6 +71,16 @@ export const Shell = ({ children }) => {
       <Container dimension="large" className={MainClass}>
         {children}
       </Container>
+
+      <OverlayContainer onClose={() => setIsMenuOpen(false)}>
+        {isMenuOpen && (
+          <Menu
+            theme={theme}
+            setTheme={setTheme}
+            onClose={() => setIsMenuOpen(false)}
+          />
+        )}
+      </OverlayContainer>
     </Container>
   )
 }
